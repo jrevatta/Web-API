@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contactos</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body>
+    <div>
+        <pre>Listado de contactos</pre>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: contacto">
+                <tr>
+                    <td data-bind="text: nombre">
+                    </td>
+                    <td data-bind="text: apellido">
+                    </td>
+                    <td data-bind="text: email">
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+                    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+                    <script src="~/Scripts/bootstrap.min.js"></script>
+                    <script src="~/Scripts/jquery-2.1.4.js"></script>
+                    <script src="~/Scripts/knockout-3.3.0.debug.js"></script>
+                    <script>
+                        var ViewModel = function () {
+                            var self = this;
+                            self.contacto = ko.observableArray();
+                            self.error = ko.observable();
+
+                            var contactoUri = '/api/Contacto/';
+
+                            function ajaxHelper(uri, method, data) {
+                                self.error('');
+                                return $.ajax({
+                                    type: method,
+                                    url: uri,
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    data: data ? JSON.stringify(data) : null
+                                }).fail(function (jqXHR, textStatus, errorThrown) {
+                                    self.error(errorThrown);
+                                });
+                            }
+
+                            function getcontacto() {
+                                ajaxHelper(contactoUri, 'GET').done(function (data) {
+                                    self.contacto(data);
+                                });
+                            }
+
+
+                            getcontacto();
+                        };
+
+                        ko.applyBindings(new ViewModel());
+
+                    </script>
+</body>
+
+</html>
