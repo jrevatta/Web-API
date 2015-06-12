@@ -448,9 +448,10 @@ Esta simplificación se logra con la librería [knockout](knockoutjs.com/documen
 
 #### Conclusiones
 
-Este ejemplo es funcional y permite una rápida introducción a Web API y servicio Web.
-El fuente del ejemplo se encuentra en [github](https://github.com/jrevatta/Web-API)
+Espero que hayan disfrutado este ejemplo, el proyecto se encuentra en [github](https://github.com/jrevatta/Web-API) y puede extenderse a más funcionalidad. 
+
+En próximas entregas, veremos como ampliar los servicios REST y el consumo de los mismos desde otros tipos de clientes.
 
 Muchas gracias.
 
-Jorge Alvarado ( j.revatta@gmail.com)
+Jorge Alvarado
