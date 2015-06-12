@@ -47,7 +47,7 @@ Una vez que tenemos el diseño de la base de datos, debemos preocuparnos por los
 Desde Visual Studio, en la opción de SQL Server Object Explorer, podemos identificar la presencia del servidor SQL Server Express. En esta herramienta podemos crear la Base de Datos, luego con un script generado en CA ERwin podemos crear los objetos en la base de datos.
 
 Para poder conectarnos desde CA ERWin Data modeler, necesitaremos definir una cadena de conexión a la base de datos. La misma que veremos en las propiedades de la base de datos desde el SQL Server Object Explorer.
-![SQL Server Explorer](images/SQLExpress.PNG)
+![SQL Server Explorer](images/SQLexpress.PNG)
 
 
 ### Instalación
@@ -87,7 +87,7 @@ Desde Visual Studio, podemos también poblar las tablas, sea desde sentencias SQ
 
 Completado los datos, nuestro siguiente paso es centrarnos en el objetivo principal, crear los servicios.
 
-[Parte 2](/introduccion_rest.md)
+[Parte 2](/introduccion_rest2.md)
 
 [1]:http://www.urbania.com.pe
 [2]:http://www.adondevivir.com

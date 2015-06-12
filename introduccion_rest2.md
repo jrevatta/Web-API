@@ -11,9 +11,9 @@ Estamos listos para este desarrollo que nos permitirá crear una Web o o una apl
 #### Crear la aplicación
 
 En Visual Studio, seleccionamos la creación de una nueva aplicación Web vacía y seleccionamos los checkbox de MVC y Web API. Esto para que nos cree los elementos necesarios para operar los servicios. 
-![Nuevo proyecto](images/nuevaweb.png)
+![Nuevo proyecto](images/nuevaweb.PNG)
 
-![Nuevo proyecto](images/nuevaweb4.png), podemos añadir unit test si deseamos.
+![Nuevo proyecto](images/nuevaweb4.PNG), podemos añadir unit test si deseamos.
 
 Como podemos observar Visual Studio ha creado varios elementos pre-determinados para personalizar. Vamos a revisar esos elementos en las siguientes secciones.
 
@@ -22,11 +22,11 @@ Como podemos observar Visual Studio ha creado varios elementos pre-determinados 
 Para crear la conexión a la base de datos y contar con un modelo para el proyecto, vamos a utilizar un paquete [NuGet][1]
 Entity Framework. Para instalar este paquete debemos ir a Project-> Manage Nuget Packages. instalamos el paquete.
 
-![entity framework](images/nuget.png)
+![entity framework](images/nuget.PNG)
 
 A continuación seleccionamos la carpeta Model y agregamos un nuevo item. Seleccionamos la opción de Data y procedemos a crear un modelo de datos de entidad ADO.NET. 
 
-![model](images/adonet.png)
+![model](images/adonet.PNG)
 
 
 El siguiente paso es seleccionar el tipo de modelo que vamos a establecer en este proyecto. Como en la sección anterior hemos diseñado una base de datos, vamos a escoger la opción de "Code First from database". La herramientas nos pide seleccionar el origen de los datos. En el origen de datos seleccionamos la instancia de base de datos COMPUTERNAME\SQLEXPRESS y a continuación la base de datos. En nuestro ejemplo se llama MXM. 
@@ -39,11 +39,11 @@ Data Source=JORGE\SQLEXPRESS;Initial Catalog=MXM;Integrated Security=True
 
 >Los pasos que solicita la herramienta nos permite construir las clases que representan a las tablas de la Base de Datos. De acuerdo a la riqueza de nuestra base de datos, esta podría tener vistas, store procedure y funciones que podrían ser interpretadas en el modelo. Por ahora nuestro diseño solo tiene tablas y relaciones.
 
-![entity](images/entity.png)
+![entity](images/entity.PNG)
 
 la herramienta genera clases del modelo. Como se puede apreciar en la figura:
 
-![code](images/codemodel.png)
+![code](images/codemodel.PNG)
 Código generado desde la base de datos:
 ```c#
 namespace WebclonUrbania.Models
