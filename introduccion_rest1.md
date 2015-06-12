@@ -39,7 +39,7 @@ El proyecto lo desarrollaremos con C# como lenguaje principal.
 Las base de datos que vamos a crear la diseñaremos con una herramienta bastante util para el modelamiento. Se trata de [CA ERwin Data Modeler CE][3], aunque existen muchas [otras][4] que se pueden considerar.
 
 El modelo inicial de base de datos puede verse de la siguiente manera:
-![Modelo DB](/images/modeloDB.png)
+![Modelo DB](images/modeloDB.PNG)
 Aunque este diseño puede discutirse, tiene la suficiente riqueza de datos para el proposito del tutorial.
 
 Una vez que tenemos el diseño de la base de datos, debemos preocuparnos por los tipos de datos, rango de los campos y las relaciones entre las tablas. 
@@ -47,14 +47,14 @@ Una vez que tenemos el diseño de la base de datos, debemos preocuparnos por los
 Desde Visual Studio, en la opción de SQL Server Object Explorer, podemos identificar la presencia del servidor SQL Server Express. En esta herramienta podemos crear la Base de Datos, luego con un script generado en CA ERwin podemos crear los objetos en la base de datos.
 
 Para poder conectarnos desde CA ERWin Data modeler, necesitaremos definir una cadena de conexión a la base de datos. La misma que veremos en las propiedades de la base de datos desde el SQL Server Object Explorer.
-![SQL Server Explorer](/images/SQLExpress.png)
+![SQL Server Explorer](images/SQLExpress.PNG)
 
 
 ### Instalación
 
 Desde la herramienta CA ERwin Data modeler, una vez conectados:
 
-![Conexión](/images/SQLconn.png) 
+![Conexión](images/SQLconn.PNG) 
 
 podemos generar la Base de datos.
 
@@ -83,7 +83,7 @@ Nuestras tablas a poblar son las siguientes, siempre respetando las relaciones q
 * Recurso
 
 Desde Visual Studio, podemos también poblar las tablas, sea desde sentencias SQL o desde una vista de datos:
-![Vista de datos](/images/editingdata.png)
+![Vista de datos](images/editingdata.PNG)
 
 Completado los datos, nuestro siguiente paso es centrarnos en el objetivo principal, crear los servicios.
 
