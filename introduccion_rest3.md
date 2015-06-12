@@ -222,9 +222,9 @@ Simplemente ejecutamos el servicio y desde el navegador o una extensión de Chro
 
 Veamos el ejemplo:
 XML
-![invoca servicio](images/invocaweb.png) 
+![invoca servicio](images/invocaweb.PNG) 
 JSON (instalar la extensión Chrom Advance Request Client)
-![invoca servicio ext](images/invocawebext.png)
+![invoca servicio ext](images/invocawebext.PNG)
 
 Como podemos observar el servicio se encuentra disponible en la siguiente URL
 
@@ -444,7 +444,7 @@ El html mostrado es el responsable para realizar el pintado de los datos del ser
 
 Esta simplificación se logra con la librería [knockout](knockoutjs.com/documentation/foreach-binding.html).
 
-![vistafinal](images/vistafinal.png)
+![vistafinal](images/vistafinal.PNG)
 
 #### Conclusiones
 
@@ -453,4 +453,4 @@ El fuente del ejemplo se encuentra en [github](https://github.com/jrevatta/Web-A
 
 Muchas gracias.
 
-Jorge Alvarado
+Jorge Alvarado ( j.revatta@gmail.com)
