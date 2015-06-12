@@ -2,25 +2,23 @@
 
 ### Desarrollo del servicio
 
-Muy bien!. Ya tenemos la base de datos lista para que sea publicada y consumida desde el servicio web REST.
+Muy bien!. En la seción anterior completamos la base de datos para el proyecto. Estamos listos para el desarrollo del servicio web, que será consumida desde una Web o una aplicación Móvil, sea en Android, iOS, HTML5, etc.
 
-Estamos listos para este desarrollo que nos permitirá crear una Web o o una aplicación Móvil, sea en Android, IOs, HTML5, etc.
-
->Visual Studio hay que reconocerlo, hace bastante trabajo por nosotros por lo que puede crear todo un servicio al vuelo con solo configurar la herramienta. Sin embargo para propositos de crear un aplicación con elementos básicos vamos a ser cuidadosos en el tipo de aplicación vamos a crear.
+>Visual Studio hay que reconocerlo, hace bastante trabajo por nosotros, por lo que puede crear todo un servicio al vuelo con solo configurar la herramienta. Sin embargo para propositos de entender los mecanismos utilizados, vamos a crear un aplicación con elementos básicos.
 
 #### Crear la aplicación
 
-En Visual Studio, seleccionamos la creación de una nueva aplicación Web vacía y seleccionamos los checkbox de MVC y Web API. Esto para que nos cree los elementos necesarios para operar los servicios. 
-![Nuevo proyecto](images/nuevaweb.PNG)
+En Visual Studio, seleccionamos la creación de una nueva aplicación Web vacía y seleccionamos los checkbox de MVC y Web API.  Podemos añadir unit test si deseamos.
+![Nuevo proyecto](images/nuevaweb.PNG).
 
-![Nuevo proyecto](images/nuevaweb4.PNG), podemos añadir unit test si deseamos.
+![Nuevo proyecto](images/nuevaweb4.PNG)
 
 Como podemos observar Visual Studio ha creado varios elementos pre-determinados para personalizar. Vamos a revisar esos elementos en las siguientes secciones.
 
 ####Crear el modelo de datos integrado a la Base de Datos.
 
-Para crear la conexión a la base de datos y contar con un modelo para el proyecto, vamos a utilizar un paquete [NuGet][1]
-Entity Framework. Para instalar este paquete debemos ir a Project-> Manage Nuget Packages. instalamos el paquete.
+Para crear la conexión a la base de datos y contar con un modelo para el proyecto, vamos a utilizar un paquete [NuGet Entity Framework][1].
+Para instalar este paquete debemos ir a Project-> Manage Nuget Packages. instalamos el paquete.
 
 ![entity framework](images/nuget.PNG)
 
@@ -37,7 +35,7 @@ Nuestra cadena de conexión queda así:
 Data Source=JORGE\SQLEXPRESS;Initial Catalog=MXM;Integrated Security=True
 ```
 
->Los pasos que solicita la herramienta nos permite construir las clases que representan a las tablas de la Base de Datos. De acuerdo a la riqueza de nuestra base de datos, esta podría tener vistas, store procedure y funciones que podrían ser interpretadas en el modelo. Por ahora nuestro diseño solo tiene tablas y relaciones.
+>Los pasos que solicita la herramienta nos permite construir las clases que representan a las tablas de la Base de Datos. De acuerdo a l diseño de la base de datos, esta podría tener vistas, store procedure y funciones que podrían ser interpretadas también en el modelo. Por ahora nuestro diseño solo tiene tablas y relaciones.
 
 ![entity](images/entity.PNG)
 
@@ -74,7 +72,7 @@ namespace WebclonUrbania.Models
 
 #### Comentarios 
 
-Hasta aquí hemos logrado un gran avance. Tenemos la mitad del proyecto avanzado y no hemos programado prácticamente nada, solo hemos configurado y seleccionado opciones. Visual Studio simplifica muchas cosas del desarrollo, eso no quiere decir que no debamos programar, lo tendremos que hacer solo que en secciones centradas en la aplicación. 
+Hasta aquí hemos logrado un importante avance. Tenemos la mitad del proyecto y no hemos programado, solo hemos configurado y seleccionado opciones. Visual Studio simplifica muchas cosas del desarrollo, eso no quiere decir que no debamos programar, lo tendremos que hacer falta poco. 
 
 Las clases del modelo bien pueden servir para ser enviadas a nuestro cliente consumidor del servicio, pero debemos tener en cuenta que enviar el modelo directamente crea la necesidad de que el cliente conozca lógica y propiedades del modelo que no necesariamiente las necesita. Este modelo está muy bien para los controller pero para que el cliente obtenga los datos es mejor que se aligeren un poco los objetos. Para ello se definen los DTO que no son más que versiones simplificadas de los objetos del modelo, para impedir algunos problemas de serialización y también encapsular el comportamiento de las clases del modelo. Ese tema lo veremos con detalle en la siguiente entrega.
 

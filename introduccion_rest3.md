@@ -1,20 +1,18 @@
 # Tutorial Web API con Asp.net parte 3
 
-En esta sección terminaremos el tutorial y mostramos que 
+En esta sección terminaremos el tutorial y mostramos el consumo del servicio desde un simple pagina web. 
+El proyecto está disponible en este repositorio y es libre de ser extendido o corregido.
+
 #### Desarrollo de objetos DTO
 
-Antes de pasar a trabajar sobre los Controller, vamos a definir objetos que sean manejados por el cliente consumidor del servicio. La literatura considera que es recomendable crear una capa de objetos [DTO](http://martinfowler.com/eaaCatalog/dataTransferObject.html), en vez de utilizar los objetos del modelo generado por el Entity Framework. 
-
-El objetivo también es eliminar algunos problemas relacionados con las relaciones que pueden existir entre estas clases del modelo y que al momento de serializarse se producen recurrencias infinitas. 
+Antes de pasar a trabajar sobre los Controller, vamos a definir objetos que sean manejados por el cliente consumidor del servicio. La literatura considera que es recomendable crear una capa de objetos [DTO](http://martinfowler.com/eaaCatalog/dataTransferObject.html) Data Transfer Oject, en vez de utilizar los objetos del modelo generado por el Entity Framework. El objetivo también es eliminar algunos problemas relacionados con las relaciones que pueden existir entre estas clases del modelo y que al momento de serializarse se generen recurrencias infinitas. 
 
 En una próxima entrega se analizará este tema al detalle, incluyendo el uso de [automapper](http://automapper.org/) para automatizar el proceso de aligerar objetos.
 
-Bueno, en esta tercera entrega recien vamos a programar algo de código. Ha sido una larga espera pero necesaria para un buen diseño de aplicación. 
-
-En la carpeta Model, agregemos una clase por cada tipo que queremos exponer a nuestro cliente, para propósitos de este tutorial solo consideraremos a dos: ContactoDTO e InmuebleDTO. Tengamos en cuenta que las funciones de la lógica de la aplicación la responderán las clases Controller, los datos de esas respuestas u operaciones se basarán en estas clases nuevas.
+Para crear las clases DTO, en la carpeta Model, agregemos una clase por cada tipo que queremos exponer a nuestro cliente, para propósitos de este tutorial solo consideraremos a dos elementos: ContactoDTO e InmuebleDTO. Tengamos en cuenta que las funciones de la lógica de la aplicación la responderán las clases Controller, los datos de esas respuestas u operaciones se basarán en estas clases nuevas.
 
 Los pasos son:
-1. En la carpeta Model, agregar un nuevo item de tipo Código - Class con nombre ContactoDTO.cs.
+* En la carpeta Model, agregar un nuevo item de tipo Código - Class con nombre ContactoDTO.cs.
 
 ```c#
 
@@ -43,7 +41,8 @@ namespace WebclonUrbania.Models
     }
 }
 ```
-Ahora definamos las propiedades de los objetos DTO que tengan correspondencia con sus pares en el modelo de clases vinculado a la base de datos.
+
+* Ahora definamos las propiedades de los objetos DTO que tengan correspondencia con sus pares en el modelo de clases vinculado a la base de datos
 
 La lógica es que estos objetos serán los que se enviarán en las funciones que envían o reciben datos de los servicios públicos. Este comportamiento se define en los Controller.
 
@@ -117,7 +116,7 @@ namespace WebclonUrbania.Models
 
 Una vez establecidas nuestras clases para el intercambio de información entre el cliente y el servicio ahora vamos a trabajar sobre los controler. Que en primera instancia solo harán el trabajo de copiar datos del modelo a estos objetos. 
 
-Seleccionamos la carpeta Controller y agregamos un nuevo item de tipo Controller. En la ventaja de selección, escogemos Web API2 Controller - Empty. Recordar que el nombre debe contener la palabra Controller al final del nombre. En este caso le pondré ContactoController.
+Seleccionamos la carpeta Controller y agregamos un nuevo item de tipo Controller. En la ventaja de selección, escogemos Web API2 Controller - Empty. Recordar que el nombre debe contener la palabra Controller al final del nombre. En este caso le pondremos ContactoController.
 
 Nuestra clase queda de esta manera, una vez generada con el asistente.
 
@@ -211,7 +210,7 @@ namespace WebclonUrbania.Controllers
     }
 }
 ```
-Algunas cosas que comentar:
+#### Observaciones
 * Tenemos que agregar una referencia al módulo del Modelo
 * En la clase hacemos referencia al modelo con la variable Model db.
 * Vamos a crear una lista de elementos ContactoDTO iterando la clase del modelo Contacto.
@@ -226,7 +225,7 @@ XML
 JSON (instalar la extensión Chrom Advance Request Client)
 ![invoca servicio ext](images/invocawebext.PNG)
 
-Como podemos observar el servicio se encuentra disponible en la siguiente URL
+Como podemos observar el servicio se encuentra disponible en la siguiente URL:
 
 localhost/API/[nombre controller]
 
@@ -272,7 +271,7 @@ Lo siguiente que vamos a ver es crear una Vista, que consuma el servicio y nos m
 
 Nuestro servicio es funcional y está listo para ser consumido, la información que hemos visto hasta ahora invocando la dirección "http//server/api/Controller" nos permite obtener la información deseada. Esta información podemos consumirla desde un cliente. Sea una web o una aplicación móvil.
 
-Para nuestro tutorial, crearemos una pequeña vista Web que nos permita mostrar el listado de contactos. Vamos a crearlo en este mismo proyecto, por lo que de algún modo estaremos creando un proyecto hibrido un módulo API REST y una página que lo consume.
+Para nuestro tutorial, crearemos una pequeña vista Web que nos permita mostrar el listado de contactos. Vamos a crearlo en este mismo proyecto, por lo que de algún modo estaremos creando un proyecto hibrido un módulo API REST y una página cliente que lo consume.
 
 
 Muy bien, solo para propósito de mostrar como actualizar ciertas librerías en nuestro proyecto, vamos a instalar las últimas versiones de Jquery y bootstrap desde la consola de paquetes Nuget.
@@ -290,18 +289,17 @@ Esta operación retirará la versión anterior de jquery y tendremos la última.
 ```javascript
 Install-Package bootstrap
 ````
-Lo mismo para esta librería knockout
+Lo mismo para esta librería bootstrap.
 
 ```javascript
 Install-Package knockoutjs
 
 ```
+También vamos a utilizar la librería knockout js.
 
-También vamos a utilizar la librería 
 Ahora, vamos a agregar una página por defecto que haga la operación de consumo del servicio. Para ello requeriremos dos pasos:
 1. Crear un Controlador MVC para esta pagina.
-2. Crear la Vista MVC.
-3. modificar la vista para consumir el servicio WEB API.
+2. Crear la Vista MVC consumir el servicio WEB API.
 
 ##### Crea un controlador MVC para la pagina
 
@@ -425,7 +423,10 @@ El código HTML quedará de la siguiente manera:
 </html>
 
 ```
-Algunas explicaciones, el código javascript de la página puede ir en un archivo js, no es necesario incluirlo en la página. Lo que si es importante es que estos script se ejecuten despues del html que asocia los datos.
+
+#### Observaciones
+
+El código javascript de la página puede ir en un archivo .js aparte, no es necesario incluirlo en la página. Lo que si es importante es que estos script se ejecuten despues del html que asocia los datos (binding). Este script invoca al servicio REST y crea un array con los datos. El siguiente HTML asocia ese array con los elementos del documento.
 
 ```html
             <tbody data-bind="foreach: contacto">
@@ -442,16 +443,16 @@ Algunas explicaciones, el código javascript de la página puede ir en un archiv
 ```
 El html mostrado es el responsable para realizar el pintado de los datos del servicio. El texto foreach duplica la sección de HTML e inserta los datos del array de datos obtenidos del servicio en el HTML.
 
-Esta simplificación se logra con la librería [knockout](knockoutjs.com/documentation/foreach-binding.html).
+Esta simplificación de código cliente se logra con la librería [knockout](knockoutjs.com/documentation/foreach-binding.html).
 
 ![vistafinal](images/vistafinal.PNG)
 
 #### Conclusiones
 
-Espero que hayan disfrutado este ejemplo, el proyecto se encuentra en [github](https://github.com/jrevatta/Web-API) y puede extenderse a más funcionalidad. 
+Espero que hayan disfrutado este ejemplo, el proyecto completo se encuentra en [github](https://github.com/jrevatta/Web-API) y puede extenderse a más funcionalidad. 
 
-En próximas entregas, veremos como ampliar los servicios REST y el consumo de los mismos desde otros tipos de clientes.
+En próximas entregas, veremos como ampliar los servicios REST y el consumo de los mismos desde otros tipos de clientes, por ejemplo una aplicación Android que consuma estos servicios. También publicar estos servicios en Azure.
 
-Muchas gracias.
+Muchas gracias y hasta la próxima.
 
 Jorge Alvarado
